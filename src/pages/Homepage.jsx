@@ -6,6 +6,7 @@ import Testimonials from "../components/Testimonials";
 import Brands from "../components/Brands";
 import Articles from "../components/Articles";
 import ContactBanner from "../components/ContactBanner";
+import HeroImage from "../assets/images/header/Hero-Elements@2x.png";
 
 const Homepage = () => {
   return (
@@ -13,7 +14,7 @@ const Homepage = () => {
       <HeaderTextLeft
         title="Let’s create something great together."
         height="h-[36rem] lg:h-[44rem]"
-        image="src\assets\images\header\Hero-Elements@2x.png"
+        image={HeroImage}
       />
       <Info />
       <OurWorksSection />
@@ -22,9 +23,6 @@ const Homepage = () => {
       <Brands />
       <Articles />
       <ContactBanner />
-
-      {/* <h1 className="font-main text-4xl font-bold">Hello, Roobert Trial!</h1>
-      <p className="font-sub text-lg">This is Space Grotesk.</p> */}
     </div>
   );
 };

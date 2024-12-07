@@ -1,5 +1,6 @@
 // src/components/HeaderTextCenter.jsx
 import React from "react";
+import SharedBackground from "../assets/images/header/Group-1@2x.png";
 
 const HeaderTextCenter = ({
   title,
@@ -13,7 +14,7 @@ const HeaderTextCenter = ({
     >
       {/* Shared Image Layer 1 */}
       <img
-        src="src\assets\images\header\Group-1@2x.png"
+        src={SharedBackground}
         alt="Shared Background"
         className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
       />
