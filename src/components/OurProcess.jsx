@@ -2,9 +2,9 @@
 
 import React from "react";
 import sideImage from "../assets/images/sideImage/Side-Image.png";
-import icon1 from "../assets/icons/ourProcess/icon-1.png";
-import icon2 from "../assets/icons/ourProcess/icon-2.png";
-import icon3 from "../assets/icons/ourProcess/icon.png";
+import icon1 from "../assets/icons/ourProcess/Icon-1.png";
+import icon2 from "../assets/icons/ourProcess/Icon-2.png";
+import icon3 from "../assets/icons/ourProcess/Icon.png";
 
 const OurProcess = () => {
   return (
