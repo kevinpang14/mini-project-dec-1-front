@@ -1,3 +1,5 @@
+// src/store/slices/portfoliosSlice.js
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../axiosInstance";
 
@@ -42,8 +44,6 @@ const portfolioSlice = createSlice({
   initialState: {
     list: {
       data: [],
-      total: 0,
-      totalPages: 0,
       status: "idle",
       error: null,
     },
@@ -64,8 +64,6 @@ const portfolioSlice = createSlice({
       .addCase(fetchPortfolioList.fulfilled, (state, action) => {
         state.list.status = "succeeded";
         state.list.data = action.payload.data;
-        state.list.total = action.payload.total;
-        state.list.totalPages = action.payload.totalPages;
       })
       .addCase(fetchPortfolioList.rejected, (state, action) => {
         state.list.status = "failed";

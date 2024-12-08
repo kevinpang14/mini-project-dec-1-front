@@ -9,6 +9,7 @@ const OurWorksSection = () => {
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.portfolios.list);
 
+  console.log("Portfolio data: ", data);
   useEffect(() => {
     dispatch(fetchPortfolioList({ page: 1, limit: 7 }));
   }, [dispatch]);
