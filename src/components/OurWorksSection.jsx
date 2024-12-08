@@ -1,8 +1,21 @@
 // src\components\OurWorksSection.jsx
-
-import React from "react";
+// Portfolio List
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPortfolioList } from "../store/slices/portfoliosSlice";
+import { Link } from "react-router-dom";
 
 const OurWorksSection = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.portfolios.list);
+
+  useEffect(() => {
+    dispatch(fetchPortfolioList({ page: 1, limit: 7 }));
+  }, [dispatch]);
+
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "failed") return <p>Error: {error}</p>;
+
   return (
     <div className="bg-white py-10">
       {/* Header Section: Text and Categories */}
@@ -23,54 +36,26 @@ const OurWorksSection = () => {
 
       {/* Image Grid Section */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2  auto-rows-[minmax(0,_auto)] mt-10">
-        {/* Image 1 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-01.jpg"
-          alt="Work 1"
-          className="w-full h-auto object-cover"
-        />
-
-        {/* Image 2 (Spans 2 Rows) */}
-        <img
-          src="src\assets\images\ourworks\Gallery-03-(Full Height).jpg"
-          alt="Work 2"
-          className="w-full h-full object-cover row-span-2"
-        />
-
-        {/* Image 3 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-02.jpg"
-          alt="Work 3"
-          className="w-full h-auto object-cover"
-        />
-
-        {/* Image 4 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-04.jpg"
-          alt="Work 4"
-          className="w-full h-auto object-cover"
-        />
-
-        {/* Image 5 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-05.jpg"
-          alt="Work 5"
-          className="w-full h-full object-cover row-span-2 lg:row-span-1"
-        />
-
-        {/* Image 6 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-06.jpg"
-          alt="Work 6"
-          className="w-full h-auto object-cover"
-        />
-
-        {/* Image 7 */}
-        <img
-          src="src\assets\images\ourworks\Gallery-07.jpg"
-          alt="Work 7"
-          className="w-full h-auto object-cover col-span-2 sm:col-span-1"
-        />
+        {data.map((portfolio, index) => (
+          <Link
+            to={`/portfolios/${portfolio.id}`}
+            key={portfolio.id}
+            className={`
+              ${index === 1 ? "row-span-2" : ""}
+              ${index === 4 ? "row-span-2 lg:row-span-1" : ""}
+              ${index === 6 ? "col-span-2 sm:col-span-1" : ""}
+              `}
+          >
+            <img
+              src={portfolio.banner}
+              alt={portfolio.title}
+              className={`w-full object-cover
+              ${index === 1 || index === 4 ? "h-full" : "h-auto"}
+           
+            `}
+            />
+          </Link>
+        ))}
       </div>
     </div>
   );

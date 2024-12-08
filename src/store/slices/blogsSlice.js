@@ -10,7 +10,8 @@ export const fetchBlogList = createAsyncThunk(
       const response = await axiosInstance.get(`/blogs`, {
         params: { limit }, //default limit is 3
       });
-      console.log("API Response:", response.data);
+      console.log("Fetch Blog List: ", response.data);
+      console.log("Fetch Blog List .data.data: ", response.data.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch blogs");
@@ -24,6 +25,7 @@ export const fetchBlogDetail = createAsyncThunk(
   async (slug, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/blogs/${slug}`);
+      console.log("Fetch Blog Detail: ", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(
