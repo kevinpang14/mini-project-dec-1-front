@@ -2,6 +2,7 @@ import React from "react";
 import FacebookLogo from "../assets/icons/socialMedia/fb.svg";
 import TwitterLogo from "../assets/icons/socialMedia/twitter.svg";
 import GoogleLogo from "../assets/icons/socialMedia/google.svg";
+import MailIcon from "../assets/icons/footer/sms-notification.svg";
 
 const Footer = () => {
   return (
@@ -20,7 +21,7 @@ const Footer = () => {
             className="mt-4 inline-block bg-black text-white-500 py-2 px-6 lg:pr-12 border-2 border-yellow-500 hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition"
           >
             <img
-              src="src\assets\icons\footer\sms-notification.svg"
+              src={MailIcon}
               alt="info@dsgnr.com"
               className="inline-block mr-6 lg:mr-14 h-6 w-6"
             />
