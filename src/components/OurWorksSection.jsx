@@ -39,7 +39,7 @@ const OurWorksSection = () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2  auto-rows-[minmax(0,_auto)] mt-10">
         {data.map((portfolio, index) => (
           <Link
-            to={`/portfolios/${portfolio.id}`}
+            to={`/our-works/${portfolio.id}`}
             key={portfolio.id}
             className={`
               ${index === 1 ? "row-span-2" : ""}
@@ -51,7 +51,7 @@ const OurWorksSection = () => {
               src={portfolio.banner}
               alt={portfolio.title}
               className={`w-full object-cover
-              ${index === 1 || index === 4 ? "h-full" : "h-auto"}
+              ${index === 1 || index === 4 ? "h-full" : "h-auto"}         
            
             `}
             />

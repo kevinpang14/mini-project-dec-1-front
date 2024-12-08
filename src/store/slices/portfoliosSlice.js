@@ -28,6 +28,7 @@ export const fetchPortfolioDetail = createAsyncThunk(
   "portfolios/fetchPortfolioDetail",
   async (id, { rejectWithValue }) => {
     try {
+      console.log("Fetch Portfolio Detail: ", id);
       const response = await axiosInstance.get(`/portfolios/${id}`);
       console.log("Fetch Portfolio Detail: ", response.data);
       return response.data;

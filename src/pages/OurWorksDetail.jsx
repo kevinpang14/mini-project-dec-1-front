@@ -1,73 +1,53 @@
+import React, { useEffect } from "react";
 import HeaderTextCenter from "../components/HeaderTextCenter";
 import Brands from "../components/Brands";
 import ContactBanner from "../components/ContactBanner";
+import HeroImage from "../assets/images/header/Hero-Image-6.png";
+import MidImage from "../assets/images/midImage/Mid-Image.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPortfolioDetail } from "../store/slices/portfoliosSlice";
+import { useParams } from "react-router-dom";
 
 const OurWorksDetail = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector(
+    (state) => state.portfolios.detail
+  );
+  const { id } = useParams();
+
+  console.log("Portfolio data: ", data);
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchPortfolioDetail({ id }));
+    }
+  }, [dispatch, id]);
+
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "failed") return <p>Error: {error}</p>;
+
+  // Handle the case where data might still be null
+  if (!data) return <p>No data available.</p>;
   return (
     <div>
       <HeaderTextCenter
         title="The work we do, and the people we help."
         height="h-[36rem] lg:h-[44rem]"
-        image="src\assets\images\header\Hero-Image-6.png"
+        image={HeroImage}
         translateY="translate-y-0"
       />
 
       {/* Image Section */}
-      <div className="mb-6 px-36">
-        <img
-          src="your-image-url.jpg"
-          alt="Portfolio"
-          className="w-full h-auto rounded-lg"
-        />
+      <div className="mb-6 px-36 py-10">
+        <img src={MidImage} alt="Mid Image" className="w-full h-auto" />
       </div>
 
       {/* Our Works Content */}
       <div className="py-10 px-36">
         {/* Header Section */}
-        <h1 className="text-4xl font-bold mb-4">Portfolio Title</h1>
+        <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
 
         {/* Content Section */}
-        <p className="text-lg text-gray-700 mb-6">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-
-        {/* Subheading */}
-        <h2 className="text-2xl font-semibold mb-2">Why do we use it?</h2>
-        <p className="text-lg text-gray-700 mb-6">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
-        </p>
-
-        {/* Subheading */}
-        <h2 className="text-2xl font-semibold mb-2">Where can I get some?</h2>
-        <p className="text-lg text-gray-700 mb-6">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-        </p>
+        <p className="text-lg text-gray-700 mb-6">{data.content}</p>
       </div>
 
       <Brands

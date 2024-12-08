@@ -3,6 +3,7 @@ import OurWorksTitle from "../components/OurWorksTitle";
 import ImageGridEven from "../components/ImageGridEven";
 import Brands from "../components/Brands";
 import ContactBanner from "../components/ContactBanner";
+import HeroImage from "../assets/images/header/Hero-Image-6.png";
 
 const OurWorks = () => {
   return (
@@ -10,7 +11,7 @@ const OurWorks = () => {
       <HeaderTextCenter
         title="The work we do, and the people we help."
         height="h-[36rem] lg:h-[44rem]"
-        image="src\assets\images\header\Hero-Image-6.png"
+        image={HeroImage}
         translateY="translate-y-0"
       />
       <div className="mr-10">
