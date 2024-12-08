@@ -2,14 +2,16 @@ import HeaderTextCenter from "../components/HeaderTextCenter";
 import OurTeamsCard from "../components/OurTeamsCard";
 import Brands from "../components/Brands";
 import ContactBanner from "../components/ContactBanner";
+import HeaderImage from "../assets/images/header/Hero-Image-6.png";
+import MidImage from "../assets/images/midImage/Mid-Image.jpg";
 
 const AboutUs = () => {
   return (
     <div>
       <HeaderTextCenter
-        title="The work we do, and the people we help."
+        title="We specialize in problem solving"
         height="h-[36rem] lg:h-[44rem]"
-        image="src\assets\images\header\Hero-Image-6.png"
+        image={HeaderImage}
         translateY="translate-y-0"
       />
       <div className="bg-white py-10 px-24">
@@ -36,7 +38,7 @@ const AboutUs = () => {
             {/* Bottom Section - Image */}
             <div className="flex justify-center col-span-3">
               <img
-                src="src\assets\images\midImage\Mid-Image.jpg"
+                src={MidImage}
                 alt="About Us"
                 className="w-full h-auto rounded-lg"
               />

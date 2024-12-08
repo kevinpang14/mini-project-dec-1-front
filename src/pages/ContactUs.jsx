@@ -2,14 +2,15 @@ import HeaderTextCenter from "../components/HeaderTextCenter";
 import Brands from "../components/Brands";
 import ContactBanner from "../components/ContactBanner";
 import ContactSection from "../components/ContactSection";
+import HeaderImage from "../assets/images/header/Hero-Image-6.png";
 
 const ContactUs = () => {
   return (
     <div>
       <HeaderTextCenter
-        title="The work we do, and the people we help."
+        title="We would love to hear from you"
         height="h-[36rem] lg:h-[44rem]"
-        image="src\assets\images\header\Hero-Image-6.png"
+        image={HeaderImage}
         translateY="translate-y-0"
       />
       {/* Contact Section */}

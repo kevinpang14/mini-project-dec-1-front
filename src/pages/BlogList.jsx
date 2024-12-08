@@ -9,7 +9,7 @@ const BlogList = () => {
     <div>
       {/* Header Text Center */}
       <HeaderTextCenter
-        title="The work we do, and the people we help."
+        title="Read best articles from us"
         height="h-[36rem] lg:h-[44rem]"
         image={HeaderImage}
         translateY="translate-y-0"
